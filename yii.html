@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+    
+    <style>
+        body {
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            background-color: var(--gray-0);
+            color: var(--gray-9);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        .yii-logo {
+            position: absolute;
+            top: 100px;
+            left: 700px;
+            width: 80px; 
+            height: auto;
+            z-index: 1000; 
+        }
+
+        @media (max-width: 768px) {
+            .yii-logo {
+                top: 325px;    
+                left: 110px;   
+                width: 80px;  
+            }
+        }
+
+        .container {
+            display: flex;
+            max-width: var(--measure-7);
+            margin: var(--size-6) auto;
+            flex: 1;
+            gap: var(--size-4);
+            justify-content: center; 
+        }
+
+        .header {
+            background-color: var(--gray-12);
+            padding: var(--size-4) 0;
+            box-shadow: var(--shadow-2);
+        }
+
+        .navbar {
+            max-width: var(--measure-6);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--size-4);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            padding: var(--size-2) var(--size-4);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-list li:hover {
+            background-color: var(--pink-2);
+            border-radius: var(--radius-2);
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--gray-0);
+            font-size: var(--font-size-fluid-4);
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--size-1);
+            text-align: left; 
+            max-width: 1000px; 
+        }
+        
+        main p {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-4);
+            margin: 0 auto var(--size-4) auto;
+            padding: var(--size-6);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-2);
+            box-shadow: var(--shadow-0);
+            text-align: justify;
+        }
+        main li {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-2);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+        main h2 {
+            font-size: var(--font-size-fluid-2); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+        main h1 {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--stone-2);
+            padding: var(--size-4);
+            box-shadow: var(--shadow-1);
+            border-radius: var(--radius-3);
+            position: sticky; 
+            top: 20px; 
+            right: 0;
+            height: max-content; 
+            margin-left: auto; 
+        }
+
+        .sidebar h2 {
+            font-size: var(--font-size-4);
+            margin-bottom: var(--size-3); 
+            text-align: center; 
+        }
+
+        .sidebar a {
+            display: block; 
+            text-decoration: none;
+            color: var(--sand-6);
+            font-size: var(--font-size-3);
+            padding: var(--size-2) var(--size-3); 
+            margin-bottom: var(--size-2); 
+            border-radius: var(--radius-2);
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--gray-6);
+            color: var(--gray-0);
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: var(--radius-2);
+            margin: var(--size-4) 0;
+            box-shadow: var(--shadow-0);
+        }
+
+        .footer {
+            background-color: var(--gray-12);
+            color: var(--gray-0);
+            padding: var(--size-2) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: var(--size-6);
+            padding-right: var(--size-6);
+        }
+
+        .footer a {
+            color: var(--gray-0);
+            text-decoration: none;
+            font-size: var(--font-size-4);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--pink-2);
+        }
+
+        .footer-center {
+            font-size: var(--font-size-3);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: var(--size-2);
+        }
+
+        .footer-right img {
+            height: 44px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column; 
+                text-align: center;
+            }
+            .footer-right {
+                justify-content: center;
+                margin-top: var(--size-2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: var(--size-4);
+                position: relative; 
+                right: 0; 
+                height: auto; 
+                margin-left: 0; 
+            }
+
+            main {
+                margin-right: 0; 
+            }
+
+            .navbar {
+                flex-direction: column; 
+            }
+
+            .nav-list {
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="yii2.png" alt="yii" class="yii-logo">
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="laravel.html">Laravel</a></li>
+                <li><a href="symfony.html">Symfony</a></li>
+                <li><a href="yii.html">Yii</a></li>
+                <li><a href="cakephp.html">CakePHP</a></li>
+                <li><a href="otziv.html">Полезные ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="content"> 
+            <h2 id="nachalo">Yii2</h2>
+            <p>
+                <a href="https://www.yiiframework.com/">Yii2</a> — это компонентный объектно-ориентированный фреймворк для веб-разработки на PHP, реализующий парадигму MVC (Model-View-Controller). Его название расшифровывается как Yes it is. Yii2 — вторая версия фреймворка Yii.Он известен благодаря высокой производительности, но, в первую очередь, он знаменит своей простотой. Этот фреймворк появился в декабре 2008 года. Он позволяет использовать код сторонних разработчиков, а имеющийся в нём генератор кода Gii позволяет быстро создавать базовые структуры, на основе которых можно строить собственные решения.Его создатели очень серьёзно подошли к вопросам безопасности. В частности, в него встроены механизмы хеширования паролей, основанные на bcrypt, и средства шифрования.
+            </p>
+            <h2 id="otlichcherti">Отличительные черты Yii2</h2>
+            <h1>
+                MVC-архитектура
+            </h1>
+            <p>
+                Фреймворки ориентированы на конкретную архитектуру приложения, то есть модель построения модулей и взаимодействий между ними. Yii реализует популярную в веб-разработке архитектуру MVC. Ее название расшифровывается как Model-View-Controller. Так называются три основных компонента архитектуры:
+            </p>
+            <li>
+                Model (модель) — это данные, с которыми работает программа. В случае с сайтом моделью будет база данных и информация со страницы. Model может изменяться при работе с приложением.
+            </li>
+            <li>
+                View (представление) — это внешнее отображение данных. На примере сайта представлением будет графический интерфейс страницы. Благодаря View пользователь получает доступ к контроллеру и может выполнять разные действия, например с помощью кнопок или форм.
+            </li>
+            <li>
+                Controller (контроллер) — это управляющая часть, которая получает запросы и изменяет модель и вид в соответствии с ними. Контроллер отвечает за связь между пользователем и приложением.
+            </li>
+            <h1>
+                Объектно-ориентированный подход
+            </h1>
+            <p>
+                В объектно-ориентированном программировании структуры данных представляются в виде объектов. Это позволяет быстро написать большой код со множеством сущностей. Yii2 предназначен для работы в парадигме объектно-ориентированного программирования, его структура построена на идеях ООП.
+            </p>
+            <h1>
+                Шаблоны Basic и Advanced
+            </h1>
+            <p>
+                Basic — шаблон для создания небольших проектов, например сайтов-визиток. В него по умолчанию входят четыре страницы, файл со скриптами для обслуживания сайта и набор команд, которые помогают работать с проектом.
+                Advanced — шаблон для разработки более сложных сайтов. Он состоит из четырех компонентов, причем три из них можно считать полноценными приложениями.
+            </p>
+            <li>
+                Backend — приложение для описания логики бэк-офиса, например админки интернет-магазина.
+            </li>
+            <li>
+                Frontend — приложение для создания «лицевой части», например витрины интернет-магазина.
+            </li>
+            <li>
+                Common — компонент, реализующий связку между Backend и Frontend.
+            </li>
+            <li>
+                Console — приложение для запуска консольных скриптов.
+            </li>
+            <h2 id="gdeisp">Где используется Yii2</h2>
+            <p>
+                Фреймворк используют бэкенд- и фулстек-разработчики. Благодаря компонентной структуре и отличной поддержке кэширования Yii2 подходит для создания порталов, форумов, CMS, магазинов или RESTful-приложений. Как и другие фреймворки, Yii2 помогает:
+            </p>
+            <li>
+                ускорять написание кода;
+            </li>
+            <li>
+                создавать архитектуру приложения;
+            </li>
+            <li>
+                быстро решать рутинные и шаблонные задачи;
+            </li>
+            <li>
+                защищать написанные сайты от атак;
+            </li>
+            <li>
+                обрабатывать ошибки;
+            </li>
+            <li>
+                тестировать и отлаживать написанный код;
+            </li>
+            <li>
+                подключать к сайту базу данных, дополнительные модули и фреймворки.
+            </li>
+            <h1>
+                Среди возможностей Yii2
+            </h1>
+            <li>
+                полная поддержка jQuer — фронтенд-библиотеки для взаимодействия между HTML-разметкой страницы и ее JavaScript-кодом;
+            </li>
+            <li>
+                поддержка Bootstrap, фреймворка для быстрого создания шаблонных элементов веб-интерфейса. Это могут быть формы, карусели и пр.;
+            </li>
+            <li>
+                защита от SQL-инъекций и XSS-атак на сайты;
+            </li>
+            <li>
+                возможность работать с базой данных и осуществлять ее миграцию — контроль версий содержимого;
+            </li>
+            <li>
+                работа с шаблонизаторами Smarty и Twig — программами, которые превращают PHP-код в HTML-страницу;
+            </li>
+            <li>
+                поддержка технологии AJAX для динамической загрузки содержимого и стиля программирования REST, который описывает особенности взаимодействия компонентов;
+            </li>
+            <li>
+                генерация шаблонного кода с помощью встроенного инструмента Gii;
+            </li>
+            <li>
+                отладка с помощью собственного отладчика Yii2-debug;
+            </li>
+            <li>
+                автоматическое тестирование, обработка ошибок и валидация форм;
+            </li>
+            <li>
+                поддержка legacy-кода, «унаследованного» от предыдущих циклов разработки.
+            </li>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Навигация по странице</h2>
+            <a href="#nachalo">Обзор Yii2</a>
+            <a href="#otlichcherti">Отличительные черты</a>
+            <a href="#gdeisp">Где используется</a>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <a href="about.html">Об авторе</a>
+        </div>
+        <div class="footer-center">
+            <p>© 2024 devlxn</p>
+        </div>
+        <div class="footer-right">
+            <span>Made with</span>
+            <a href="https://open-props.style/">
+            <img src="open props.png">
+        </a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+                                                                                                        

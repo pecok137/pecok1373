@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+    
+    <style>
+        body {
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            background-color: var(--gray-0);
+            color: var(--gray-9);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        .laravel-logo {
+            position: absolute;
+            top: 100px;
+            left: 800px;
+            width: 80px; 
+            height: auto;
+            z-index: 1000; 
+        }
+
+        @media (max-width: 768px) {
+            .laravel-logo {
+                top: 325px;   
+                left: 150px;  
+                width: 80px;  
+            }
+        }
+    
+        .container {
+            display: flex;
+            max-width: var(--measure-7);
+            margin: var(--size-6) auto;
+            flex: 1;
+            gap: var(--size-4);
+            justify-content: center; 
+        }
+
+        .header {
+            background-color: var(--gray-12);
+            padding: var(--size-4) 0;
+            box-shadow: var(--shadow-2);
+        }
+
+        .navbar {
+            max-width: var(--measure-6);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--size-4);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            padding: var(--size-2) var(--size-4);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-list li:hover {
+            background-color: var(--pink-2);
+            border-radius: var(--radius-2);
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--gray-0);
+            font-size: var(--font-size-fluid-4);
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--size-1);
+            text-align: left; 
+            max-width: 1000px; 
+        }
+        
+        main p {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-4);
+            margin: 0 auto var(--size-4) auto;
+            padding: var(--size-6);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-2);
+            box-shadow: var(--shadow-0);
+            text-align: justify;
+        }
+        main li {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--jungle-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+        main h2 {
+            font-size: var(--font-size-fluid-2); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+        main h1 {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--stone-2);
+            padding: var(--size-4);
+            box-shadow: var(--shadow-1);
+            border-radius: var(--radius-3);
+            position: sticky; 
+            top: 20px; 
+            right: 0;
+            height: max-content; 
+            margin-left: auto; 
+        }
+
+        .sidebar h2 {
+            font-size: var(--font-size-4);
+            margin-bottom: var(--size-3); 
+            text-align: center; 
+        }
+
+        .sidebar a {
+            display: block; 
+            text-decoration: none;
+            color: var(--sand-6);
+            font-size: var(--font-size-3);
+            padding: var(--size-2) var(--size-3); 
+            margin-bottom: var(--size-2); 
+            border-radius: var(--radius-2);
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--gray-6);
+            color: var(--gray-0);
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: var(--radius-2);
+            margin: var(--size-4) 0;
+            box-shadow: var(--shadow-0);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--size-6);
+        }
+
+        table, th, td {
+            border: 1px solid var(--gray-4);
+        }
+
+        th, td {
+            padding: var(--size-3);
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--teal-4);
+            color: var(--gray-0);
+        }
+
+        td {
+            background-color: var(--sand-1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            margin: var(--size-4) 0;
+        }
+
+        .footer {
+            background-color: var(--gray-12);
+            color: var(--gray-0);
+            padding: var(--size-2) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: var(--size-6);
+            padding-right: var(--size-6);
+        }
+
+        .footer a {
+            color: var(--gray-0);
+            text-decoration: none;
+            font-size: var(--font-size-4);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--pink-2);
+        }
+
+        .footer-center {
+            font-size: var(--font-size-3);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: var(--size-2);
+        }
+
+        .footer-right img {
+            height: 44px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column; 
+                text-align: center;
+            }
+            .footer-right {
+                justify-content: center; 
+                margin-top: var(--size-2);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: var(--size-4);
+                position: relative; 
+                right: 0; 
+                height: auto; 
+                margin-left: 0; 
+            }
+
+            main {
+                margin-right: 0; 
+            }
+
+            .navbar {
+                flex-direction: column; 
+            }
+
+            .nav-list {
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="Laravel.svg.png" alt="Symfony Logo" class="laravel-logo">
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="laravel.html">Laravel</a></li>
+                <li><a href="symfony.html">Symfony</a></li>
+                <li><a href="yii.html">Yii</a></li>
+                <li><a href="cakephp.html">CakePHP</a></li>
+                <li><a href="otziv.html">Полезные ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="content"> 
+            <h2 id="overview">Laravel</h2>
+            <p><a href="https://laravel.com/">Laravel</a> — это бесплатный опенсорсный PHP-фреймворк, который появился в 2011 году. С тех пор он смог стать тем фреймворком, который чаще всего выбирают веб-разработчики. Одна из главных причин этого заключается в том, что Laravel позволяет разрабатывать сложные веб-приложения проще, быстрее и безопаснее, чем любые другие фреймворки.Использование Laravel, кроме того, облегчает решение множества рутинных задач, что ведёт к тому, что разработчикам приходится писать, в соответствующих ситуациях, меньше кода. Среди таких задач — маршрутизация, кеширование, авторизация, аутентификация.</p>
+            <p>
+               У Lavarel есть поддержка jQuery и BootStrap, собственная консоль Artisan, упрощающая работу с авторизацией, контроллерами, миграциями и моделями, а также свой компонент Blade, который помогает применять PHP-код в представлениях, не тормозя работу фреймворка. Кроме того, у Lavarel обширная библиотека расширений (свыше 9 тысяч компонентов), которая постоянно пополняется. Одно из несомненных достоинств — вся техническая документация по фреймворку переведена на русский язык.
+            </p>
+            <h2 id="vozmonosti">Возможности фреймворка</h2>
+
+            <li>Консоль Artisan</li>
+            <p>
+                Artisan — интерфейс командной строки, включенный в Lavarel. Он позволяет генерировать модели, новые тесты, контроллеры, уведомления из командной строки. Это намного удобнее, чем копировать откуда-либо шаблон класса или писать его вручную.Консоль используют для работы с базами данных, управления контроллером и других действий. Разработчик может написать для нее собственные команды.
+            </p>
+            <li>Eloquent ORM</li>
+            <p>
+                ORM — это технология программирования для связи базы данных и языка программирования. Использование ORM позволяет ускорить разработку. Для PHP существует множество реализаций ORM, но Laravel пользуется собственной. Она называется Eloquent и работает по схеме ActiveRecord, согласно которой каждой таблице в базе соответствует один класс. Eloquent любят за удобство и возможность писать понятный код, который легко поддерживать, защиту от SQL-инъекций — способа взлома сайтов и программ. ORM можно загрузить отдельно от остальных компонентов Laravel.
+            </p>
+            <li>Конструктор Fluent</li>
+            <p>
+              Это конструктор для быстрого построения запросов к базе, который полностью совместим с ядром Eloquent ORM. Fluent — мощный инструмент, позволяющий с легкостью модифицировать записи в базе данных. Все запросы используют подготовленные выражения и защищены от SQL-инъекций.  
+            </p>
+            <li>Шаблонизатор Blade</li>
+            <p>
+              Шаблонизаторы используются для превращения HTML-шаблонов в готовые страницы. Шаблоны — это заготовки для будущих веб-страниц, которые включают HTML-верстку без контента и PHP-код. Задача программы-шаблонизатора — выполнить PHP-код и подставить в шаблон контент, чтобы превратить его в готовую страницу. PHP в итоговой веб-странице быть не должно.
+
+            Blade — это шаблонизатор фреймворка Laravel. Он не имеет ограничений на чистый PHP в шаблонах — это удобнее для backend-разработчика. Отсутствие ограничений не создает дополнительной нагрузки на приложение.  
+            </p>
+            <li>Валидация</li>
+            <p>
+               Валидация — проверка входящих данных. Она нужна, чтобы случайная ошибка была вовремя найдена и обработана. Логику валидации можно написать самостоятельно. Если пользователь введет неверные данные, он попадет на предыдущую страницу. Сайт не «упадет» и останется работоспособным. 
+            </p>
+            <li>Система контроля версий баз данных</li>
+            <p>
+                Это позволяет проводить миграции — модификации структуры базы данных. С помощью фреймворка можно гибко управлять миграцией прямо через Artisan: запускать, откатывать по отдельности или полностью, видоизменять.
+            </p>
+            <li>Юнит-тестирование</li>
+            <p>
+               Его еще называют модульным тестированием. Это «базовый уровень» проведения тестов. На работоспособность тестируются отдельные модули кода. Это нужно, чтобы позже не столкнуться с ошибкой на более высоких уровнях.В Laravel по умолчанию встроена система PHPUnit — инструмент, который позволяет создавать и проводить тесты. С PHPUnit это проще, чем вручную. 
+            </p>
+            <li>Аутентификация</li>
+            <p>
+                С Laravel можно реализовать вход на сайт с помощью логина и пароля либо через социальные сети.Например, пакеты Laravel Passport и Laravel Socialite позволяют входить через API других приложений с помощью стандарта OAuth. Это протокол авторизации, который дает возможность авторизоваться с помощью учетной записи другого сайта, чаще всего соцсети.Пакет Laravel Sanctum отвечает за аутентификацию для простых приложений и одностраничных сайтов. Он более легковесный, чем Passport, и авторизует пользователя с помощью системы токенов — физических устройств.
+            </p>
+            <h2 id="ystanovka">Как установить и начать пользоваться</h2>
+            <p>
+                Для установки и начала работы с фреймворком Laravel вам потребуется выполнить несколько шагов. Ниже приведены основные этапы:
+            </p>
+            <h1>1. Установка Composer</h1>
+            <p>
+                Laravel использует Composer для управления зависимостями. Если у вас его еще нет, установите его, перейдя на <a href="https://getcomposer.org/">официальный сайт</a> и следуйте инструкциям для вашей операционной системы.
+            </p>
+            <h1>2. Установка Laravel</h1>
+            <p>
+                После установки Composer выполните команду в командной строке для создания нового проекта Laravel:</p>
+
+            <p>composer create-project --prefer-dist laravel/laravel имя-проекта</p>
+
+            <p>Замените «имя-проекта» на имя вашего проекта. Composer загрузит все необходимые файлы и зависимости.
+            </p>
+            <h1>3. Конфигурация базы данных</h1>
+            <p>
+                Перейдите в каталог вашего проекта и отредактируйте файл .env, чтобы настроить параметры подключения к вашей базе данных (например, MySQL или PostgreSQL).
+            </p>
+            <h1>4. Генерация ключа приложения</h1>
+            <p>
+                Выполните следующую команду, чтобы сгенерировать уникальный ключ для вашего приложения: php artisan key:generate
+            </p>
+            <h1>5. Запуск локального сервера</h1>
+            <p>
+                Вы можете запустить локальный сервер для разработки, выполнив следующую команду: php artisan serve
+            </p>
+            <h1>6. Создание маршрутов и контроллеров</h1>
+            <p>
+                Laravel использует файлы маршрутов в routes/web.php для определения URL-адресов и их обработки в контроллерах. Создайте маршруты и контроллеры для вашего приложения.
+            </p>
+            <h1>7. Создание и миграция базы данных</h1>
+            <p>
+                Вы можете создавать и изменять таблицы базы данных с помощью миграций. Создайте миграции с помощью команды php artisan make:migration, а затем примените их с помощью php artisan migrate.
+            </p>
+            <h1>8. Создание представлений</h1>
+            <p>
+              Создайте представления (шаблоны) в папке resources/views для отображения данных вашего приложения.  
+            </p>
+            <h1>9. Разработка</h1>
+            <p>
+               Теперь вы можете начать разрабатывать свое приложение, добавляя маршруты, контроллеры, представления и другие компоненты Laravel. 
+            </p>
+            <h2 id="video">Видео о Laravel</h2>
+            <iframe src="https://www.youtube.com/embed/ImtZ5yENzgE" title="Видео о Laravel"></iframe>
+
+            <h2 id="advantages">Преимущества и недостатки Laravel</h2>
+            <table>
+                <tr>
+                    <th>Преимущества</th>
+                    <th>Недостатки</th>
+                </tr>
+                <tr>
+                    <td>Мощная документация и сообщество</td>
+                    <td>Требует знаний современных PHP-концепций</td>
+                </tr>
+                <tr>
+                    <td>Интеграция с базами данных через Eloquent ORM</td>
+                    <td>Может быть слишком громоздким для маленьких проектов</td>
+                </tr>
+                <tr>
+                    <td>Поддержка шаблонов Blade</td>
+                    <td>Относительно высокая кривая обучения</td>
+                </tr>
+                <tr>
+                    <td>Широкая экосистема и поддержка пакетов</td>
+                    <td>Некоторые пакеты могут быть сложными в настройке</td>
+                </tr>
+            </table>
+
+            <p>Laravel идеально подходит для разработки сложных веб-приложений с большим количеством функционала. Благодаря огромному сообществу и поддержке, этот фреймворк становится выбором многих разработчиков.</p>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Навигация по странице</h2>
+            <a href="#overview">Обзор Laravel</a>
+            <a href="#vozmonosti">Возможности фреймворка</a>
+            <a href="#ystanovka">Установка</a>
+            <a href="#video">Видео о Laravel</a>
+            <a href="#advantages">Преимущества и недостатки</a>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <a href="about.html">Об авторе</a>
+        </div>
+        <div class="footer-center">
+            <p>© 2024 devlxn</p>
+        </div>
+        <div class="footer-right">
+            <span>Made with</span>
+            <a href="https://open-props.style/">
+            <img src="open props.png">
+        </a>
+        </div>
+    </footer>
+
+</body>
+</html>

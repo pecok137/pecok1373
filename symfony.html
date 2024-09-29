@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+    
+    <style>
+        body {
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            background-color: var(--gray-0);
+            color: var(--gray-9);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        .symfony-logo {
+            position: absolute;
+            top: 110px;
+            left: 815px;
+            width: 80px; 
+            height: auto;
+            z-index: 1000; 
+        }
+
+        @media (max-width: 768px) {
+            .symfony-logo {
+                top: 325px;    
+                left: 155px;   
+                width: 80px;  
+            }
+        }
+
+        .container {
+            display: flex;
+            max-width: var(--measure-7);
+            margin: var(--size-6) auto;
+            flex: 1;
+            gap: var(--size-4);
+            justify-content: center; 
+        }
+
+        .header {
+            background-color: var(--gray-12);
+            padding: var(--size-4) 0;
+            box-shadow: var(--shadow-2);
+        }
+
+        .navbar {
+            max-width: var(--measure-6);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--size-4);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            padding: var(--size-2) var(--size-4);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-list li:hover {
+            background-color: var(--pink-2);
+            border-radius: var(--radius-2);
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--gray-0);
+            font-size: var(--font-size-fluid-4);
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            padding: var(--size-1);
+            text-align: left; 
+            max-width: 1000px; 
+        }
+        
+        main p {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-4);
+            margin: 0 auto var(--size-4) auto;
+            padding: var(--size-6);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-2);
+            box-shadow: var(--shadow-0);
+            text-align: justify;
+        }
+        main li {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--teal-1);
+            border-radius: var(--radius-2);
+            box-shadow: var(--shadow-1);
+            text-align: bold;
+        }
+        main h2 {
+            font-size: var(--font-size-fluid-2); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+        main h1 {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-2);
+            margin: 0 auto var(--size-2) auto;
+            padding: var(--size-2);
+            background-color: var(--gray-0);
+            border-radius: var(--radius-5);
+            box-shadow: var(--shadow-0);
+            text-align: bold;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--stone-2);
+            padding: var(--size-4);
+            box-shadow: var(--shadow-1);
+            border-radius: var(--radius-3);
+            position: sticky; 
+            top: 20px; 
+            right: 0;
+            height: max-content; 
+            margin-left: auto; 
+        }
+
+        .sidebar h2 {
+            font-size: var(--font-size-4);
+            margin-bottom: var(--size-3); 
+            text-align: center; 
+        }
+
+        .sidebar a {
+            display: block; 
+            text-decoration: none;
+            color: var(--sand-6);
+            font-size: var(--font-size-3);
+            padding: var(--size-2) var(--size-3); 
+            margin-bottom: var(--size-2); 
+            border-radius: var(--radius-2);
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--gray-6);
+            color: var(--gray-0);
+        }
+
+        .content img {
+            width: 100%;
+            border-radius: var(--radius-2);
+            margin: var(--size-4) 0;
+            box-shadow: var(--shadow-0);
+        }
+
+        .footer {
+            background-color: var(--gray-12);
+            color: var(--gray-0);
+            padding: var(--size-2) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: var(--size-6);
+            padding-right: var(--size-6);
+        }
+
+        .footer a {
+            color: var(--gray-0);
+            text-decoration: none;
+            font-size: var(--font-size-4);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--pink-2);
+        }
+
+        .footer-center {
+            font-size: var(--font-size-3);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: var(--size-2);
+        }
+
+        .footer-right img {
+            height: 44px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column; 
+                text-align: center;
+            }
+            .footer-right {
+                justify-content: center; 
+                margin-top: var(--size-2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: var(--size-4);
+                position: relative;
+                right: 0; 
+                height: auto; 
+                margin-left: 0; 
+            }
+
+            main {
+                margin-right: 0; 
+            }
+
+            .navbar {
+                flex-direction: column; 
+            }
+
+            .nav-list {
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://symfony.com/logos/symfony_black_03.svg" alt="Symfony Logo" class="symfony-logo">
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="laravel.html">Laravel</a></li>
+                <li><a href="symfony.html">Symfony</a></li>
+                <li><a href="yii.html">Yii</a></li>
+                <li><a href="cakephp.html">CakePHP</a></li>
+                <li><a href="otziv.html">Полезные ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="content"> 
+            <h2 id="nachalo">Symfony</h2>
+            <p>
+               <a href="https://symfony.com/">Symfony</a> - это MVC-фреймворк с открытым исходным кодом для быстрой разработки современных веб-приложений. Symfony - это полнофункциональный веб-фреймворк. Он содержит набор многократно используемых PHP-компонентов. Вы можете использовать любые компоненты Symfony в приложениях, независимо от фреймворка.Также он обладает огромным функционалом и активным сообществом, имеет гибкую конфигурацию с использованием YAML, XML или аннотаций. Symfony интегрируется с независимой библиотекой и PHP Unit,  в основном вдохновлен Ruby on Rails, Django и Spring фреймворками для веб-приложений.
+            </p>
+            <p>
+                Компоненты Symfony используются во многих проектах с открытым исходным кодом, включая Composer, Drupal и phpBB.Фреймворк Symfony состоит из нескольких компонентов, таких как компонент HttpFoundation, который понимает HTTP и предлагает красивый объект запроса и ответа, используемый другими компонентами. Другие компоненты являются просто вспомогательными, например, Validator, который помогает проверять данные. Компонент Kernel - это сердце системы. Kernel - это, по сути, «главный класс», который управляет окружением и отвечает за обработку http-запросов.Хорошо организованная структура Symfony, чистый код и хорошие практики программирования облегчают веб-разработку. Symfony очень гибкая, на ней можно создавать микросайты и работать с корпоративными приложениями с миллиардами подключений.
+            </p>
+            <h2 id="ocobennosti">Особенности</h2>
+            <li>
+                Система на базе Model-View-Controller
+            </li>
+            <li>
+                Высокопроизводительный PHP-фреймворк
+            </li>
+            <li>
+                Гибкая маршрутизация URI
+            </li>
+            <li>
+                Многократно используемый код, который легче поддерживать
+            </li>
+            <li>
+                Управление сессиями
+            </li>
+            <li>
+                Регистрация ошибок
+            </li>
+            <li>
+                Полнофункциональные классы баз данных с поддержкой нескольких платформ
+            </li>
+            <li>
+                Огромное и активное сообщество
+            </li>
+            <li>
+                Набор развязанных и многократно используемых компонентов
+            </li>
+            <li>
+                Стандартизация и совместимость приложений
+            </li>
+            <li>
+                Защита от подделки межсайтовых запросов и других атак
+            </li>
+            <li>
+                Движок шаблонов Twig
+            </li>
+            <li>
+                Микрофреймворк - Symfony можно использовать для разработки конкретной функциональности. Вам не нужно переделывать или устанавливать весь фреймворк
+            </li>
+            <li>
+                Чрезвычайно развитый движок шаблонов и быстрая доставка контента пользователям
+            </li>
+            <li>
+                Совместимость и расширяемость - программисты могут легко расширять все классы фреймворка
+            </li>
+             <h2 id="integracii">Интеграции</h2>
+             <p>
+                Drupal 8 - Drupal это PHP-фреймворк с открытым исходным кодом для управления контентом. Drupal 8 использует основные слои Symfony и расширяет его для поддержки модулей Drupal. 
+             </p>
+             <p>
+                Thelia - Thelia это решение для электронной коммерции на базе Symfony. Изначально Thelia была написана на PHP-коде и MySQL, однако она не позволяла создавать более быстрые приложения. Чтобы преодолеть этот недостаток, Thelia интегрировалась с Symfony для разработки приложений в настраиваемом виде. 
+             </p>
+             <p>
+                 Dailymotion - Dailymotion один из крупнейших в мире независимых развлекательных видеосайтов, базирующийся во Франции. Приняв решение перейти на фреймворк с открытым исходным кодом и большим сообществом, разработчики Dailymotion решили использовать компоненты Symfony благодаря их гибкости.
+             </p>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Навигация по странице</h2>
+            <a href="#nachalo">Обзор Symfony</a>
+            <a href="#ocobennosti">Особенности</a>
+            <a href="#integracii">Интеграции</a>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <a href="about.html">Об авторе</a>
+        </div>
+        <div class="footer-center">
+            <p>© 2024 devlxn</p>
+        </div>
+        <div class="footer-right">
+            <span>Made with</span>
+            <a href="https://open-props.style/">
+            <img src="open props.png">
+        </a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+                                                                                                        

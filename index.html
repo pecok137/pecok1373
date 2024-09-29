@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Фреймворки - История PHP</title>
+    <link rel="stylesheet" href="https://unpkg.com/open-props">
+
+    <style>
+        
+        body {
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand-1);
+            color: var(--gray-9);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .php-logo {
+            position: absolute;
+            top: 200px;
+            left: 1900px;
+            width: 400px; 
+            height: auto;
+            z-index: 1000;
+            border-radius: 50%;
+            box-shadow: var(--shadow-4);
+             
+        }
+
+        @media (max-width: 768px) {
+            .laravel-logo {
+                top: 325px;    
+                left: 150px;   
+                width: 80px;  
+            }
+        }
+
+        .container {
+            max-width: var(--measure-7);
+            margin: var(--size-6) auto;
+            padding: var(--size-4);
+            flex: 1;
+        }
+
+        main {
+            text-align: left;
+        }
+
+        main h1 {
+            font-size: var(--font-size-fluid-1); 
+            margin-bottom: var(--size-6);
+            text-align: center;
+        }
+
+        main p {
+            font-size: var(--font-size-fluid-1); 
+            line-height: var(--leading-3);
+            margin-bottom: var(--size-4);
+            max-width: 800px;
+            margin: 0 auto var(--size-6) auto;
+            padding: var(--size-4);
+            background-color: var(--gray-1);
+            border-radius: var(--radius-3);
+            box-shadow: var(--shadow-4);
+            text-align: justify;
+        }
+
+       
+        .header {
+            background-color: var(--gray-12);
+            padding: var(--size-4) 0;
+            box-shadow: var(--shadow-2);
+        }
+
+        .navbar {
+            max-width: var(--measure-6);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--size-4);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            padding: var(--size-2) var(--size-4);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-list li:hover {
+            background-color: var(--pink-2);
+            border-radius: var(--radius-2);
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--gray-0);
+            font-size: var(--font-size-fluid-4);
+            font-weight: bold;
+        }
+
+
+        /* Подвал */
+        .footer {
+            background-color: var(--gray-12);
+            color: var(--gray-0);
+            padding: var(--size-2) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: var(--size-6);
+            padding-right: var(--size-6);
+            position: relative; /* Исправление */
+        }
+
+        .footer a {
+            color: var(--gray-0);
+            text-decoration: none;
+            font-size: var(--font-size-4);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--pink-2);
+        }
+
+        .footer-center {
+            font-size: var(--font-size-3);
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: var(--size-2);
+        }
+
+        .footer-right img {
+            height: 44px;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-right {
+                justify-content: center; 
+                margin-top: var(--size-2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            main {
+                margin-right: 0;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-list {
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+<img src="PHP-logo.svg.png" alt="phplogo" class="php-logo">
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="laravel.html">Laravel</a></li>
+                <li><a href="symfony.html">Symfony</a></li>
+                <li><a href="yii.html">Yii</a></li>
+                <li><a href="cakephp.html">CakePHP</a></li>
+                <li><a href="otziv.html">Полезные ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <div class="container">
+        <main>
+            <h1>История PHP</h1>
+            <p>
+                PHP (Hypertext PreProcessor, «препроцессор гипертекста») — это скриптовый язык программирования. Имеет открытый исходный код. Изначально создавался для разработки веб-приложений, но в процессе обновлений стал языком общего назначения.Язык программирования PHP спроектировал датский программист Расмус Лердорф в 1995 году как инструмент для создания интерактивных и динамических веб-сайтов. Расшифровывается как «Hypertext Preprocessor» (гипертекстовый предобработчик). Сейчас PHP активно используют веб-разработчики для создания сайтов и веб-приложений. Это наименее конкурентный язык для работы. Его использует большинство сервисов, и, скорее всего, ситуация не изменится в ближайшие 10 лет. Поэтому специалисты очень востребованы.
+            </p>
+            <p>
+                Основная область применения — разработка скриптов, которые работают на стороне сервера. Также можно создавать скрипты командной строки и GUI-приложения (приложения с графическим интерфейсом пользователя).PHP используется в проектах разных масштабов: от браузерной игры и социальной сети до крупных веб-приложений в интернете, таких как Facebook*, ВКонтакте, Google, W3C, Yahoo, NASA. На PHP написаны многие системы управления контентом (CMS), например Drupal, WordPress, Joomla. Также он использовался при разработке популярных фреймворков для создания сайтов, например Yii2, Laravel, Symfony.
+            </p>
+            <p>
+                <a href="https://www.php.net/">PHP.net</a> — это официальный веб-сайт языка программирования PHP, который широко используется для создания веб-сайтов и веб-приложений. Этот веб-сайт предоставляет обширную документацию, ресурсы, и информацию о PHP, включая официальную документацию по языку, загрузки последних версий, новости, сообщество пользователей и разработчиков, а также форумы для обсуждения вопросов и проблем, связанных с этим языком программирования.
+            </p>
+        </main>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div>
+            <a href="about.html">Об авторе</a>
+        </div>
+        <div class="footer-center">
+            <p>© 2024 devlxn</p>
+        </div>
+        <div class="footer-right">
+            <p>Made with</p>
+            <a href="https://open-props.style/">
+            <img src="open props.png">
+        </a>
+        </div>
+    </footer>
+
+</body>
+</html>
